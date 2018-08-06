@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /var/lib/jenkins/workspace/Spring3Hibernet_test/Spring3HibernateApp/target/*.war
+  - source: Spring3Hibernet_test/Spring3HibernateApp/target/*.war
     destination: /var/lib/tomcat7/webapps/
 hooks:
   BeforeInstall:
