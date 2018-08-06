@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /Spring3Hibernet_test/Spring3HibernateApp/target/Spring3HibernateApp.war
+  - source: /Spring3HibernateApp/target/Spring3HibernateApp.war
     destination: /var/lib/tomcat7/webapps/
 #hooks:
 #  BeforeInstall:
