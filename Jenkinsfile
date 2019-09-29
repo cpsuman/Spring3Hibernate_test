@@ -1,5 +1,7 @@
 pipeline {
-  agent any {
+  agent {
+    node {
+      label "master"
       customWorkspace "workspace/${env.BRANCH_NAME}"
     }
   }
@@ -242,3 +244,4 @@ pipeline {
       cleanWs()
     }
   }
+}
