@@ -12,6 +12,7 @@ pipeline {
     string(name: 'PRODUCT_VERSION', defaultValue: '10.2.0.0.026.002', description: 'Version of SOM-B2B.')
     choice(name: 'USM_INSTALL_ACTIVITY', choices: ['Refresh', 'Full'], description: 'Pick installation activity type for USM')
     choice(name: 'SFO_INSTALLATION_ACTIVITY', choices: ['Refresh', 'Full'], description: 'Pick installation activity type for SFO')
+    properties([[$class: 'JiraProjectProperty'], buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '10', numToKeepStr: '10'))])
   }
   options { skipDefaultCheckout() }
   stages {
