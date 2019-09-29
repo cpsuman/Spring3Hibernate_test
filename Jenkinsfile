@@ -13,8 +13,8 @@ pipeline {
     choice(name: 'USM_INSTALL_ACTIVITY', choices: ['Refresh', 'Full'], description: 'Pick installation activity type for USM')
     choice(name: 'SFO_INSTALLATION_ACTIVITY', choices: ['Refresh', 'Full'], description: 'Pick installation activity type for SFO') 
   }
-  {
-    properties([[$class: 'JiraProjectProperty'], buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '10', numToKeepStr: '10'))])
+ options {
+    buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '30'))
   }
   options { skipDefaultCheckout() }
   stages {
