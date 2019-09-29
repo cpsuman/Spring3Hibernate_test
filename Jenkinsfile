@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label "${env.BRANCH_NAME}"
+  agent any {
       customWorkspace "workspace/${env.BRANCH_NAME}"
     }
   }
