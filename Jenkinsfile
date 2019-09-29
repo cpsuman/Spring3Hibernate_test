@@ -13,10 +13,8 @@ pipeline {
     choice(name: 'USM_INSTALL_ACTIVITY', choices: ['Refresh', 'Full'], description: 'Pick installation activity type for USM')
     choice(name: 'SFO_INSTALLATION_ACTIVITY', choices: ['Refresh', 'Full'], description: 'Pick installation activity type for SFO') 
   }
- options {
-    buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '30'))
-  }
   options { skipDefaultCheckout() }
+  buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '30'))
   stages {
     stage('Build') {
       when { anyOf { branch 'SOMB2B-DEV-STAGE'; branch 'SOMB2B-SIT'; branch 'SOMB2B-DEV-10.2Upgrade'; branch 'SOMB2B-DEV-TEMP'; branch 'SOMB2B-PROD'} }
