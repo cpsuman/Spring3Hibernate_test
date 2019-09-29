@@ -183,7 +183,7 @@ pipeline {
     stage('SFO Deployment') {
       agent {
         node {
-          label "SFO_${env.BRANCH_NAME}_INSTALLTION"
+          label "master"
           customWorkspace "pipeline/${env.BRANCH_NAME}"
         }
       }
@@ -211,37 +211,3 @@ pipeline {
         }
       }  
     }
-    stage('Test') {
-      when { anyOf { branch 'SOMB2B-DEV-STAGE'; branch 'SOMB2B-SIT'; branch 'SOMB2B-DEV-10.2Upgrade'; branch 'SOMB2B-DEV-TEMP'; branch 'SOMB2B-PROD'} }
-      failFast true
-      parallel {
-        stage('Infra Sanity') {
-          when { expression { env.JENKINS_URL == 'https://jenkins.o2a.b2b.cloud.corp.telstra.com/' } }
-          steps {
-            echo "Running Infra Sanity ...."
-          }
-        }
-        stage('Tosca Sanity') {
-          when { expression { env.JENKINS_URL == 'https://jenkins.o2a.b2b.cloud.corp.telstra.com/' } }
-          steps {
-            echo "Running Sanity ...."
-          }
-        }
-        stage('Tosca Regression') {
-          when { expression { env.JENKINS_URL == 'https://jenkins.o2a.b2b.cloud.corp.telstra.com/' } }
-          steps {
-            echo "Running Regression ...."
-          }
-        }
-      }
-    }
-  }
-  post {
-    always {
-      junit "**/target/surefire-reports/*.xml"
-    }
-    cleanup {
-      cleanWs()
-    }
-  }
-}
