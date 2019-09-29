@@ -155,7 +155,7 @@ pipeline {
     stage('USM Deployment') {
       agent {
         node {
-          label "USM_${env.BRANCH_NAME}_INSTALLTION"
+          label "master"
           customWorkspace "pipeline/${env.BRANCH_NAME}"
         }
       }
